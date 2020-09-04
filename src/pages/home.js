@@ -1,7 +1,6 @@
 import React from 'react';
 
-function Home() {
-  return <>our main homescreen</>;
+export const Homepage = () => {
+  return <><p>Our main homescreen</p></>;
 }
 
-export default Home;

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './stylesheet/main.scss';
 
+import Router from './router';
+
 function App() {
-  return <div className="App">Hacker News Clone with React</div>;
+  return (
+    <Fragment>
+      <Router />
+    </Fragment>
+  );
 }
 
 export default App;
