@@ -12,4 +12,19 @@ const http = axios.create({
   },
 });
 
+function get(url, { params = {}, responseType = 'json', headers = {} } = {}) {
+  return instance({
+    url,
+    params,
+    responseType,
+    method: 'get',
+    headers: { ...headers },
+  }).then((response) => response);
+}
+
+const http = {
+  ...instance,
+  get,
+};
+
 export default http;
