@@ -1,6 +1,14 @@
 import React from 'react';
 
-export const Homepage = () => {
-  return <><p>Our main homescreen</p></>;
-}
+import { Navbar } from '../components/navbar.component';
+import { Storylist } from '../components/storylist.component';
 
+export const Homepage = () => {
+  return (
+    <>
+      <Navbar />
+      <p>Our main homescreen</p>
+      <Storylist />
+    </>
+  );
+};

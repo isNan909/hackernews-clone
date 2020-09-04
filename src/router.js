@@ -8,7 +8,7 @@ import {
 
 import history from './utils/history';
 
-import * as routes from './constants/routes';
+import * as routes from './constants/app.routes';
 
 import { Homepage } from './pages/home';
 import { Errorpage } from './pages/error';

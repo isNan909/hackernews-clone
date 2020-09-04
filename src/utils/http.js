@@ -2,9 +2,6 @@ import axios from 'axios';
 
 import config from 'config';
 
-/**
- * Http Utility.
- */
 const http = axios.create({
   baseURL: config.baseURI,
   headers: {
@@ -19,7 +16,7 @@ function get(url, { params = {}, responseType = 'json', headers = {} } = {}) {
     responseType,
     method: 'get',
     headers: { ...headers },
-  }).then((response) => response);
+  }).then((response) => response.data);
 }
 
 const http = {
