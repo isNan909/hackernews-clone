@@ -1,4 +1,6 @@
 export const URL = process.env.REACT_APP_API_URL;
-export const PUBLIC_URL = `${URL}newstories.json`;
-export const STORY_URL = `${URL}item/`;
+export const JSON_QUERY = `.json?print=pretty`;
+export const STORY_ID = `${URL}/topstories${JSON_QUERY}`;
+export const STORY_LIST = `${URL}/item/`;
+
 

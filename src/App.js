@@ -3,12 +3,12 @@ import './stylesheet/main.scss';
 
 import Router from './router';
 
-function App ()  {
+function App() {
   return (
     <Fragment>
       <Router />
     </Fragment>
   );
-};
+}
 
 export default App;
