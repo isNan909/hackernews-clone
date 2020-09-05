@@ -10,7 +10,7 @@ const getPageValues = ({ begin, end, items }) => items.slice(begin, end);
 
 export const getStoriesfromId = async (storyId) => {
   const stories = await http.get(`${STORY_LIST}` + storyId + `${JSON_QUERY}`);
-  return stories; 
+  return stories;
 };
 
 export const getTopStoriesId = async () => {
