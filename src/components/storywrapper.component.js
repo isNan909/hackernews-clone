@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 
-import { getAllStoryIds } from '../services/newslist';
+import { getAllStoryIds, getStoriesfromId } from '../services/newslist';
 import { useQuery } from 'react-query';
 
 export const Storywrapper = () => {
   const fetchStories = async () => {
-    const fetchstoriesId = await getAllStoryIds().then((data) =>
-      setStoryIds(data)
-    );
-    return fetchstoriesId;
+    const fetchstoriesId = await getAllStoryIds()
+    const res = fetchstoriesId.slice(0, 20);
+    res.forEach(element => { 
+      console.log(element);
+      // getStoriesfromId(element).then(result => { 
+      //   setStoryIds(result);
+      // })
+      setStoryIds(res);
+    })
   };
 
   const [storyIds, setStoryIds] = useState([]);
-  const { status } = useQuery('Story', fetchStories);
+  const { status } = useQuery('', fetchStories);
   console.log(storyIds);
   return (
     <>

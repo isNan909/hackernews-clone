@@ -1,7 +1,7 @@
 import http from '../utils/http';
 import { PUBLIC_URL, STORY_URL } from '../constants/app.endpoints';
 
-export const getStories = async (storyId) => {
+export const getStoriesfromId = async (storyId) => {
   const stories = await http.get((`${STORY_URL}` + storyId).json);
   return stories;
 };
