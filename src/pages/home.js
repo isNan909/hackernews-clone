@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { Navbar } from '../components/navbar.component';
-import { Storylist } from '../components/storylist.component';
+import { Storywrapper } from '../components/storywrapper.component';
 
 export const Homepage = () => {
   return (
     <>
       <Navbar />
       <p>Our main homescreen</p>
-      <Storylist />
+      <Storywrapper />
     </>
   );
 };

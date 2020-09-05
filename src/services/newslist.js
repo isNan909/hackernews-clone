@@ -1,13 +1,13 @@
 import http from '../utils/http';
-import { newStoriesUrl, storyUrl } from '../constants/app.endpoints';
+import { PUBLIC_URL, STORY_URL } from '../constants/app.endpoints';
 
 export const getStories = async (storyId) => {
-  const res = await http.get((`${storyUrl}` + storyId).json);
-  return res.data;
+  const stories = await http.get((`${STORY_URL}` + storyId).json);
+  return stories;
 };
 
-export const getStoryIds = async () => {
-  const result = await http.get(`${newStoriesUrl}`);
+export const getAllStoryIds = async () => {
+  const storiesId = await http.get(`${PUBLIC_URL}`);
 
-  return result.data;
+  return storiesId;
 };

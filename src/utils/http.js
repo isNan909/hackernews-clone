@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import config from 'config';
+import config from '../config';
 
-const http = axios.create({
+const instance = axios.create({
   baseURL: config.baseURI,
   headers: {
     'Content-Type': 'application/json',
