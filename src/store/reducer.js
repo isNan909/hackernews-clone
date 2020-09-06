@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import app from '../App';
+import app from '../components/App/app';
 
 import story from './story/story.reducer';
 
