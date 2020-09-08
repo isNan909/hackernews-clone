@@ -1,4 +1,4 @@
-import { getTopStoriesId, getStoriesByPage } from '../../services/newslist';
+import hackerNewsApi  from '../../services/newslist';
 
 export const actionTypes = {
   FETCH_STORY_IDS_REQUEST: `FETCH_STORY_IDS_REQUEST`,
@@ -12,26 +12,27 @@ export const actionTypes = {
 const action = (type, payload) => ({
   type,
   payload,
-});
+}); 
 
 const actions = {
   fetchStoryIds: (payload = {}) => {
     return (dispatch) => {
       dispatch(action(actionTypes.FETCH_STORY_IDS_REQUEST, payload));
 
-      return getTopStoriesId().then((storyIds) => {
+      return hackerNewsApi.getTopStoriesId().then((storyIds) => {
         dispatch(action(actionTypes.FETCH_STORY_IDS_SUCESS, { storyIds }));
         dispatch(actions.fetchStories({ storyIds, page: 0 }));
         return storyIds;
       });
     };
   },
+
   fetchStories: (payload = {}) => {
     return (dispatch) => {
       dispatch(action(actionTypes.FETCH_STORY_REQUEST, payload));
       const { storyIds, page } = payload;
 
-      return getStoriesByPage(storyIds, page)
+      return hackerNewsApi.getStoriesByPage(storyIds, page)
         .then((stories) =>
           dispatch(action(actionTypes.FETCH_STORY_SUCESS, { stories }))
         )
