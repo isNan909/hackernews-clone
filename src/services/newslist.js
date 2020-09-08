@@ -3,7 +3,7 @@ import { STORY_ID, STORY_LIST, JSON_QUERY } from '../constants/app.endpoints';
 
 const PAGE_LIMIT = 20;
 const hackerNewsApi = {};
-const clientService = new http({ baseURL: http.URL});
+const clientService = new http({ baseURL: http.URL });
 
 const getPageSlice = (limit, page = 0) => ({
   begin: page * limit,
@@ -18,7 +18,9 @@ hackerNewsApi.getTopStoryIds = async () => {
 };
 
 hackerNewsApi.getStory = async (storyId) => {
-  const stories = clientService.get(`${STORY_LIST}` + storyId + `${JSON_QUERY}`);
+  const stories = clientService.get(
+    `${STORY_LIST}` + storyId + `${JSON_QUERY}`
+  );
   return stories;
 };
 
