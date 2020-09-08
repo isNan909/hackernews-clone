@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchInitialStories: () => dispatch(actions.fetchStoryIds()),
 });
 
-export default connect(mapDispatchToProps, mapStateToProps)(Storywrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(Storywrapper);
