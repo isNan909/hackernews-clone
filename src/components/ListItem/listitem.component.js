@@ -1,11 +1,12 @@
 import React from 'react';
 
-export const Storylistitem = () => {
+export const Storylistitem = ({ stories }) => {
   return (
     <>
       <ul>
-        <li>Story link one</li>
-        <li>Story link two</li>
+        {/* {stories.map((x) => (
+          <li key={stories.id}>{x}</li>
+        ))} */}
       </ul>
     </>
   );

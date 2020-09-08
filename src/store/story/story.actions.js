@@ -18,10 +18,10 @@ const actions = {
   fetchStoryIds: (payload = {}) => {
     return (dispatch) => {
       dispatch(action(actionTypes.FETCH_STORY_IDS_REQUEST, payload));
-      console.log(hackerNewsApi);
       return hackerNewsApi.getTopStoryIds().then((storyIds) => {
         dispatch(action(actionTypes.FETCH_STORY_IDS_SUCESS, { storyIds }));
         dispatch(actions.fetchStories({ storyIds, page: 0 }));
+        // console.log(storyIds);
         return storyIds;
       });
     };
@@ -40,4 +40,5 @@ const actions = {
     };
   },
 };
+
 export default actions;

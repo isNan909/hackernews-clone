@@ -18,16 +18,19 @@ hackerNewsApi.getTopStoryIds = async () => {
 };
 
 hackerNewsApi.getStory = async (storyId) => {
-  const stories = clientService.get(
+  const stories = await clientService.get(
     `${STORY_LIST}` + storyId + `${JSON_QUERY}`
   );
+  console.log(stories);
   return stories;
 };
 
-hackerNewsApi.getStoriesByPage = async (ids, page) => {
+hackerNewsApi.getStoriesByPage = async (storyId, page) => {
   const { begin, end } = await getPageSlice(PAGE_LIMIT, page);
-  const activeIds = await getPageValues({ begin, end, items: ids });
-  const storyPromises = activeIds.map((id) => hackerNewsApi.getStory(id));
+  const activeIds = await getPageValues({ begin, end, items: storyId });
+  const storyPromises = await activeIds.map((storyId) =>
+    hackerNewsApi.getStory(storyId)
+  );
   return Promise.all(storyPromises);
 };
 

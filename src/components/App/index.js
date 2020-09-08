@@ -7,10 +7,12 @@ const mapStateToProps = (state) => ({
   page: state.page,
   storyIds: state.storyIds,
   isFetching: state.isFetching,
-});
+}); 
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchInitialStories: () => dispatch(actions.fetchStoryIds()),
+  fetchInitialStories: () => dispatch(actions.fetchStoryIds())
 });
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(Storywrapper);
+
