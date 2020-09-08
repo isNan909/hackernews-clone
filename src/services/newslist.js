@@ -1,23 +1,30 @@
 import http from '../utils/http';
-
-const JSON_QUERY = '.json?print=pretty';
-const BASE_URL = 'https://hacker-news.firebaseio.com/v0';
-const client = new http({ baseURL: BASE_URL });
-
-const hackerNewsApi = {}; 
+import { STORY_ID, STORY_LIST, JSON_QUERY } from '../constants/app.endpoints';
 
 const PAGE_LIMIT = 20;
+const hackerNewsApi = {};
+const clientService = new http({ baseURL: http.URL});
+
 const getPageSlice = (limit, page = 0) => ({
   begin: page * limit,
   end: (page + 1) * limit,
 });
+
 const getPageValues = ({ begin, end, items }) => items.slice(begin, end);
 
-hackerNewsApi.getTopStoryIds = () => client.get(`/topstories${JSON_QUERY}`);
-hackerNewsApi.getStory = (id) => client.get(`/item/${id}${JSON_QUERY}`);
-hackerNewsApi.getStoriesByPage = (ids, page) => {
-  const { begin, end } = getPageSlice(PAGE_LIMIT, page);
-  const activeIds = getPageValues({ begin, end, items: ids });
+hackerNewsApi.getTopStoryIds = async () => {
+  const storyId = await clientService.get(`${STORY_ID}`);
+  return storyId;
+};
+
+hackerNewsApi.getStory = async (storyId) => {
+  const stories = clientService.get(`${STORY_LIST}` + storyId + `${JSON_QUERY}`);
+  return stories;
+};
+
+hackerNewsApi.getStoriesByPage = async (ids, page) => {
+  const { begin, end } = await getPageSlice(PAGE_LIMIT, page);
+  const activeIds = await getPageValues({ begin, end, items: ids });
   const storyPromises = activeIds.map((id) => hackerNewsApi.getStory(id));
   return Promise.all(storyPromises);
 };
