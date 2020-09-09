@@ -3,16 +3,14 @@ import actions from '../../store/story/story.actions';
 import { Storywrapper } from '../storywrapper.component';
 
 const mapStateToProps = (state) => ({
-  stories: state.stories,
+  stories: state.story.stories,
   page: state.page,
   storyIds: state.storyIds,
   isFetching: state.isFetching,
-}); 
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchInitialStories: () => dispatch(actions.fetchStoryIds())
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  fetchInitialStories: () => dispatch(actions.fetchStoryIds()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Storywrapper); 
-
+export default connect(mapStateToProps, mapDispatchToProps)(Storywrapper);

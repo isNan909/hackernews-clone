@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { Storylist } from './List/storylist.component';
 
 export const Storywrapper = (props) => {
-  console.log(props);
-  const [stories, setStories] = useState([]);
-
+  const { fetchInitialStories } = props;
   useEffect(() => {
-    async function fetchdata() {
-      const story = await props.fetchInitialStories();
-      console.log(story);
-      setStories(story);
-    }
-    fetchdata();
+    fetchInitialStories();
   });
 
   return (
     <>
-      <Storylist story={stories} />
+      <Storylist story={props.stories} />
     </>
   );
 };

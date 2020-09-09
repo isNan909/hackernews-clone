@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const Storylistitem = (stories) => {
-  console.log(stories, 'Storylistitem');
+export const Storylistitem = ({ story }) => {
+  // console.log(story);
   return (
     <>
       <ul>
-        {stories.map((x) => (
-          <li key={stories.id}>{x.by}</li>
+        {story.map((x) => (
+          <li key={x.id}>{x.by}</li>
         ))}
       </ul>
     </>

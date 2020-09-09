@@ -21,7 +21,6 @@ const actions = {
       return hackerNewsApi.getTopStoryIds().then((storyIds) => {
         dispatch(action(actionTypes.FETCH_STORY_IDS_SUCESS, { storyIds }));
         dispatch(actions.fetchStories({ storyIds, page: 0 }));
-        // console.log(storyIds);
         return storyIds;
       });
     };
