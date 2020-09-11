@@ -9,8 +9,8 @@ export const Storywrapper = (props) => {
   }, [fetchInitialStories]);
 
   return (
-    <>
+    <section className="story-wrapper container">
       <Storylist story={props.stories} />
-    </>
+    </section>
   );
 };
