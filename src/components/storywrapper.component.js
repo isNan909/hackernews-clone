@@ -6,7 +6,7 @@ export const Storywrapper = (props) => {
   const { fetchInitialStories } = props;
   useEffect(() => {
     fetchInitialStories();
-  });
+  }, [fetchInitialStories]);
 
   return (
     <>
