@@ -1,4 +1,4 @@
-import http from '../utils/http';
+import http from './http';
 import { STORY_ID, STORY_LIST, JSON_QUERY } from '../constants/app.endpoints';
 
 const PAGE_LIMIT = 20;
