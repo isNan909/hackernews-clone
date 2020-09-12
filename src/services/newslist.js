@@ -21,7 +21,7 @@ hackerNewsApi.getStory = async (storyId) => {
   const stories = await clientService.get(
     `${STORY_LIST}` + storyId + `${JSON_QUERY}`
   );
-  console.log(stories);
+  // console.log(stories);
   return stories;
 };
 
