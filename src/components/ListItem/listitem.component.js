@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment'
+import moment from 'moment';
 
 
 export const Storylistitem = ({ story }) => {
@@ -18,7 +18,8 @@ export const Storylistitem = ({ story }) => {
                   </div>
                   <div className="storyList-info">
                     by<u> {x.by} </u>
-                    {moment.unix(x.time).format("HH/mm/ss")} | <u>{x.descendants} comments</u>
+                    {moment.unix(x.time).format('HH/mm/ss')} |{' '}
+                    <u>{x.descendants} comments</u>
                   </div>
                 </div>
               </li>
