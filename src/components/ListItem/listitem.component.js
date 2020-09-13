@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-
+import Loader from '../Loader/Loader';
 
 export const Storylistitem = ({ story }) => {
   return (
@@ -26,7 +26,7 @@ export const Storylistitem = ({ story }) => {
             ))}
           </>
         ) : (
-          <>Loading ...</>
+          <Loader />
         )}
       </ul>
     </div>
