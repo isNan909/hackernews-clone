@@ -11,16 +11,14 @@ export const Storylist = ({ story, hasMoreStoriesSelector }) => {
     }
   };
   return (
-    <>
-      <InfiniteScroll
-        className="infiniteWrapper"
-        dataLength={story.length}
-        next={fetchStories}
-        hasMore={hasMoreStoriesSelector}
-        loader={<Loader />}
-      >
-        <Storylistitem story={story} />
-      </InfiniteScroll>
-    </>
+    <InfiniteScroll
+      className="infiniteWrapper"
+      dataLength={story.length}
+      next={fetchStories}
+      hasMore={hasMoreStoriesSelector}
+      loader={<Loader />}
+    >
+      <Storylistitem story={story} />
+    </InfiniteScroll>
   );
 };
