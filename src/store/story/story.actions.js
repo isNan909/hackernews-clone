@@ -9,9 +9,9 @@ export const actionTypes = {
   FETCH_STORY_FAILED: `FETCH_STORY_FAILED`,
 };
 
-const action = (type, payload) => ({
+const action = (type, payload) => ({ 
   type,
-  payload,
+  payload, 
 });
 
 const actions = {

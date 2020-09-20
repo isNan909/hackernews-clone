@@ -1,6 +1,6 @@
 import http from './http';
 import { STORY_ID, STORY_LIST, JSON_QUERY } from '../constants/app.endpoints';
-
+ 
 const PAGE_LIMIT = 20;
 const hackerNewsApi = {};
 const clientService = new http({ baseURL: http.URL });

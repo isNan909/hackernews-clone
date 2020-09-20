@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import Router from './router';
+import { Navbar } from './components/navbar.component';
 
 function App() {
   return (
-    <Fragment>
+    <>
+      <Navbar />
       <Router />
-    </Fragment>
+    </>
   );
 }
 

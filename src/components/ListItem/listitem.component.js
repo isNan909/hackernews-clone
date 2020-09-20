@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Loader from '../Loader/Loader';
+import { Link } from 'react-router-dom';
 
 export const Storylistitem = ({ story }) => {
   const unixTimestamp = (time) => {
@@ -23,7 +24,10 @@ export const Storylistitem = ({ story }) => {
                   </div>
                   <div className="storyList-info">
                     by<u> {x.by} </u>
-                    {unixTimestamp(x.time)} | <u>{x.descendants} comments</u>
+                    {unixTimestamp(x.time)} |{' '}
+                    <Link to={`/stories/${x.id}`}>
+                      <u>{x.descendants} comments</u>
+                    </Link>
                   </div>
                 </div>
               </li>

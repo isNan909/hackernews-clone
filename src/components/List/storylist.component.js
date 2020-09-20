@@ -9,7 +9,7 @@ export const Storylist = ({ story, hasMoreStoriesSelector }) => {
     if (!isFetching) {
       fetchStories({ storyIds, page });
     }
-  };
+  }; 
   return (
     <InfiniteScroll
       className="infiniteWrapper"
