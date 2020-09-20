@@ -16,7 +16,12 @@ const actions = {
     const { commentId } = payload;
     return (dispatch) => {
       dispatch(action(actionTypes.GET_COMMENTS, payload));
-      return hackerNewsApi.getComments(commentId);
+      return hackerNewsApi
+        .getComments(commentId)
+        .then(() => dispatch(action(actionTypes.GET_COMMENTS_SUCCESS)))
+        .catch((err) =>
+          dispatch(action(actionTypes.GET_COMMENTS_FAILURE, err))
+        );
     };
   },
 };

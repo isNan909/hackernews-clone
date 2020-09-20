@@ -12,7 +12,7 @@ export const Navbar = () => {
               <img src={Logo} alt="react logo" />
             </Link>
             <Link to="/">Top</Link>
-            <Link to="">New</Link>
+            <Link to="/">New</Link>
             <Link to="/">Show</Link>
             <Link to="/">Ask</Link>
             <Link to="/">Jobs</Link>
