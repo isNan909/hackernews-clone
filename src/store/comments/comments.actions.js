@@ -50,6 +50,7 @@ const actions = {
     return (dispatch) => {
       dispatch(action(actionTypes.GET_COMMENT_LIST, payload));
       const { commentId } = payload;
+      debugger
       return hackerNewsApi
         .getComments(commentId)
         .then((comments) =>

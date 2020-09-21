@@ -4,9 +4,9 @@ import { URL } from '../constants/app.endpoints';
 const hackerNewsApi = {};
 const clientService = new http({ baseURL: http.URL });
 
-hackerNewsApi.getCommentID = async (storyId) => {
-  const commentID = await clientService.get(`${URL}/item/` + storyId + `.json`);
-  return commentID;
+hackerNewsApi.getCommentID = async (c) => {
+  const commentID = await clientService.get(`${URL}/item/` + c + `.json`);
+  return commentID; 
 };
 
 hackerNewsApi.getComments = async (commentID) => {
