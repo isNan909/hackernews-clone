@@ -11,9 +11,11 @@ const action = (type, payload) => ({
   payload,
 });
 
+// https://hacker-news.firebaseio.com/v0/item/24538395.json
+
 const actions = {
   fetchComments: (payload = {}) => {
-    const { commentId } = payload;
+    const commentId  = payload;
     return (dispatch) => {
       dispatch(action(actionTypes.GET_COMMENTS, payload));
       return hackerNewsApi

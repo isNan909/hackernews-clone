@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+// import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import actions from '../store/comments/comments.actions';
@@ -6,19 +7,29 @@ import actions from '../store/comments/comments.actions';
 import { Comment } from '../components/Comments/Comment';
 import Loader from '../components/Loader/Loader';
 
-export const StoryComments = (match, dispatch, loading, hasError, comments) => {
+export const StoryComments = ({
+  match,
+  dispatch,
+  loading,
+  hasError,
+  comments,
+}) => {
   useEffect(() => {
     const { id } = match.params;
     dispatch(actions.fetchComments(id));
   }, [dispatch, match]);
 
-  const renderComments = () => {
-    if (loading.comments) return <Loader />;
-    if (hasError.comments) return <p>Sorry, no comments available.</p>;
+  console.log(match, 'match');
 
-    return comments.map((comment) => (
-      <Comment key={comment.id} comment={comment} />
-    ));
+  const renderComments = () => {
+    if (loading) return <Loader />;
+    if (hasError) return <p>Sorry, no comments available.</p>;
+
+    return (
+      comments?.map((comment) => (
+        <Comment key={comment.id} comment={comment} />
+      )) ?? null
+    );
   };
   return <>{renderComments()}</>;
 };
@@ -27,10 +38,24 @@ export const StoryComments = (match, dispatch, loading, hasError, comments) => {
 //   fetchInitialComments: () => dispatch(actions.fetchComments(comment.id)),
 // });
 
-const mapStateToProps = (state) => ({
-  comments: state.comments.comments,
-  loading: { comments: state.comments.loading },
-  hasErrors: { comments: state.comments.hasErrors },
-});
+const mapStateToProps = (state) => {
+  // console.log(state.comments);
+  // debugger
+  return {
+    comments: state.comment.comments,
+    loading: state.comment.loading,
+    hasErrors: state.comment.hasErrors,
+  };
+};
+
+// const mapStateToProps = (state, props) => {
+//   log here
+//     return {
+//       errorMessage,
+//       code: urlCode || '',
+//       isPendingApi: state.users?.isPendingApi,
+//       createAccountSuccess: state?.users?.createAccountSuccess ?? false
+//     };
+//   };
 
 export default connect(mapStateToProps)(StoryComments);
