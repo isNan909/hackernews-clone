@@ -1,7 +1,17 @@
 import React from 'react';
 
-export const Comment = ({ comment }) => (
+import Loader from '../Loader/Loader';
+
+export const Comment = ({ comments }) => (
   <>
-    <h2>{comment.id}</h2>
+    {comments && comments.length > 0 ? (
+      <ul>
+        {comments.map((x) => (
+          <li>{x.id}</li>
+        ))}
+      </ul>
+    ) : (
+      <Loader />
+    )}
   </>
 );

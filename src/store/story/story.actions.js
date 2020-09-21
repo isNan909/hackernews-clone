@@ -9,20 +9,25 @@ export const actionTypes = {
   FETCH_STORY_FAILED: `FETCH_STORY_FAILED`,
 };
 
-const action = (type, payload) => ({ 
+const action = (type, payload) => ({
   type,
-  payload, 
+  payload,
 });
 
 const actions = {
   fetchStoryIds: (payload = {}) => {
     return (dispatch) => {
       dispatch(action(actionTypes.FETCH_STORY_IDS_REQUEST, payload));
-      return hackerNewsApi.getTopStoryIds().then((storyIds) => {
-        dispatch(action(actionTypes.FETCH_STORY_IDS_SUCESS, { storyIds }));
-        dispatch(actions.fetchStories({ storyIds, page: 0 }));
-        return storyIds;
-      });
+      return hackerNewsApi
+        .getTopStoryIds()
+        .then((storyIds) => {
+          dispatch(action(actionTypes.FETCH_STORY_IDS_SUCESS, { storyIds }));
+          dispatch(actions.fetchStories({ storyIds, page: 0 }));
+          return storyIds;
+        })
+        .catch((err) =>
+          dispatch(action(actionTypes.FETCH_STORY_IDS_FAILED, err))
+        );
     };
   },
 

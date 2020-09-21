@@ -4,6 +4,9 @@ export const actionTypes = {
   GET_COMMENTS: 'GET COMMENTS',
   GET_COMMENTS_SUCCESS: 'GET_COMMENTS_SUCCESS',
   GET_COMMENTS_FAILURE: 'GET_COMMENTS_FAILURE',
+  GET_COMMENT_LIST: 'GET_COMMENT_LIST',
+  GET_COMMENT_LIST_SUCESS: 'GET_COMMENT_LIST',
+  GET_COMMENT_LIST_FAILED: 'GET_COMMENT_LIST_FAILED',
 };
 
 const action = (type, payload) => ({
@@ -11,18 +14,49 @@ const action = (type, payload) => ({
   payload,
 });
 
-// https://hacker-news.firebaseio.com/v0/item/24538395.json
+// const actions = {
+//   fetchCommentID: (payload = {}) => {
+//     const commentId  = payload;
+//     return (dispatch) => {
+//       dispatch(action(actionTypes.GET_COMMENTS, payload));
+//       return hackerNewsApi
+//         .getCommentID(commentId)
+//         .then(() => dispatch(action(actionTypes.GET_COMMENTS_SUCCESS)))
+//         .catch((err) =>
+//           dispatch(action(actionTypes.GET_COMMENTS_FAILURE, err))
+//         );
+//     };
 
 const actions = {
-  fetchComments: (payload = {}) => {
-    const commentId  = payload;
+  fetchCommentID: (payload = {}) => {
     return (dispatch) => {
       dispatch(action(actionTypes.GET_COMMENTS, payload));
       return hackerNewsApi
-        .getComments(commentId)
-        .then(() => dispatch(action(actionTypes.GET_COMMENTS_SUCCESS)))
+        .getCommentID()
+        .then((commentId) => {
+          dispatch(
+            action(action(actionTypes.GET_COMMENTS_SUCCESS, { commentId }))
+          );
+          dispatch(actions.fetchComments({ commentId }));
+          return commentId;
+        })
         .catch((err) =>
           dispatch(action(actionTypes.GET_COMMENTS_FAILURE, err))
+        );
+    };
+  },
+
+  fetchComments: (payload = {}) => {
+    return (dispatch) => {
+      dispatch(action(actionTypes.GET_COMMENT_LIST, payload));
+      const { commentId } = payload;
+      return hackerNewsApi
+        .getComments(commentId)
+        .then((comments) =>
+          dispatch(action(actionTypes.GET_COMMENT_LIST_SUCESS, { comments }))
+        )
+        .catch((err) =>
+          dispatch(action(actionTypes.GET_COMMENT_LIST_FAILED, err))
         );
     };
   },

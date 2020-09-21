@@ -4,11 +4,16 @@ import { URL } from '../constants/app.endpoints';
 const hackerNewsApi = {};
 const clientService = new http({ baseURL: http.URL });
 
-hackerNewsApi.getComments = async (storyId) => {
-  const comments = await clientService.get(`${URL}/item/` + storyId + `.json`);
-  console.log(comments);
-  debugger;
-  return comments; 
+hackerNewsApi.getCommentID = async (storyId) => {
+  const commentID = await clientService.get(`${URL}/item/` + storyId + `.json`);
+  return commentID;
+};
+
+hackerNewsApi.getComments = async (commentID) => {
+  const comments = await clientService.get(
+    `${URL}/item/` + commentID + `.json`
+  );
+  return comments;
 };
 
 export default hackerNewsApi;
