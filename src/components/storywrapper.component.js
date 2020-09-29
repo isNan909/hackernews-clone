@@ -13,4 +13,4 @@ export const Storywrapper = (props) => {
       <Storylist story={props.stories} />
     </section>
   );
-};
+}; 

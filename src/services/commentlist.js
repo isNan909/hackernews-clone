@@ -6,7 +6,7 @@ const clientService = new http({ baseURL: http.URL });
 
 hackerNewsApi.getCommentID = async (c) => {
   const commentID = await clientService.get(`${URL}/item/` + c + `.json`);
-  return commentID; 
+  return commentID;
 };
 
 hackerNewsApi.getComments = async (commentID) => {

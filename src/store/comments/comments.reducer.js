@@ -9,16 +9,16 @@ export const initialState = {
 
 export default function commentsReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.GET_COMMENTS:
+    case actionTypes.GET_COMMENT_LIST:
       return { ...state, isFetching: true };
-    case actionTypes.GET_COMMENTS_SUCCESS:
+    case actionTypes.GET_COMMENT_LIST_SUCESS:
       return {
         ...state,
         comments: action.payload,
-        isFetching: true,
+        isFetching: false,
         hasErrors: false,
       };
-    case actionTypes.GET_COMMENTS_FAILURE:
+    case actionTypes.GET_COMMENT_LIST_FALIURE:
       return { ...state, isFetching: false, hasErrors: true };
     default:
       return state;
